@@ -18,10 +18,12 @@
 #import "FLEXManager+Private.h"
 #import "FLEXSystemLogTableViewController.h"
 #import "FLEXNetworkHistoryTableViewController.h"
+#import "FLEXServerSelectionTableViewController.h"
 
 static __weak UIWindow *s_applicationWindow = nil;
 
 typedef NS_ENUM(NSUInteger, FLEXGlobalsRow) {
+    FLEXGlobalsRowServerSelection,
     FLEXGlobalsRowNetworkHistory,
     FLEXGlobalsRowSystemLog,
     FLEXGlobalsRowLiveObjects,
@@ -188,6 +190,16 @@ typedef NS_ENUM(NSUInteger, FLEXGlobalsRow) {
                     return [[FLEXNetworkHistoryTableViewController alloc] init];
                 };
                 break;
+
+            case FLEXGlobalsRowServerSelection:
+                titleFuture = ^{
+                    return @"🔮  Server Selection";
+                };
+                viewControllerFuture = ^{
+                    return [[FLEXServerSelectionTableViewController alloc] init];
+                };
+                break;
+
             case FLEXGlobalsRowCount:
                 break;
         }
